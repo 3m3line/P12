@@ -1,0 +1,21 @@
+button {
+    background-color: #363537;
+    color: white; 
+    border: 2px solid rgba(255, 255, 255, 0.50);
+    padding: 10px 20px;
+    text-align: center;
+    // text-decoration: none; /* Pas de soulignement */
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    width: 150px;
+  
+    &:hover,&:active  {
+      background-color: white; 
+      color: #363537;
+      border-color: #363537;
+      cursor: pointer;
+    }
+}

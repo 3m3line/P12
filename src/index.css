@@ -1,68 +1,53 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  font-family: Inter, sans-serif;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+#root {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(243deg, #E26A6A 0.02%, #FF6F61 46.01%, #F0C27B 100%);
+  margin: 0;
+  padding: 0;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+ul, li, h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;         
+  list-style: none;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+img {
+  object-fit: cover; 
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+
+/****TEXTE****/
+/* Textes cachés pour accessibilité et navigateurs */
+.visually-hidden{
+  visibility: hidden;
+  position: absolute; 
+}
+
+/*police fancy*/
+@font-face {
+    font-family: 'Just Me Again Down Here';
+    src: url('./fonts/JustMeAgainDownHere-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+.fancy-text{
+  font-family: 'Just Me Again Down Here', 'Arial', sans-serif;
+  font-size: 96px;
+  color: white;
 }
