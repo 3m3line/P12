@@ -15,7 +15,7 @@
 body {
   display: flex;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(243deg, #E26A6A 0.02%, #FF6F61 46.01%, #F0C27B 100%);
   margin: 0;
   padding: 0;
@@ -48,6 +48,11 @@ img {
 }
 .fancy-text{
   font-family: 'Just Me Again Down Here', 'Arial', sans-serif;
-  font-size: 96px;
+  /* font-size: 96px; */
+  font-size: 6vw;
   color: white;
+}
+
+input, textarea {
+  font-family: Inter, sans-serif;
 }
