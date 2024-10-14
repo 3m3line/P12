@@ -1,11 +1,20 @@
 import { useState } from 'react';
+
+import data from './Projets-BD.json'
+import { getUniqueTechnologies, filterProjectsByTechnology } from './Fonctions/dataFiltres'
+
 import './App.scss';
 import NavBar from './Containers/NavBar';
 import Button from './Components/Button';
 import FormContact from './Containers/FormContact';
 
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectedTech, setSelectedTech] = useState(null);
+
+  const handleFilter = (tech) => {
+      setSelectedTech(tech);
+  };
 
   return (
     <>
@@ -17,48 +26,14 @@ function App() {
       <section className='filters'>
         <h2 className='visually-hidden'>Choisissez un tag pour filtrer les technologies</h2>
         <div>
-          <Button 
-            text="Html" 
-            className="btn-filter" 
-            onClick={() => {}}
-          />
-          <Button 
-            text="Javascript" 
-            className="btn-filter" 
-            onClick={() => {}}
-          />
-          <Button 
-            text="React" 
-            className="btn-filter" 
-            onClick={() => {}}
-          />
-          <Button 
-            text="Wordpress" 
-            className="btn-filter" 
-            onClick={() => {}}
-          />
-          <Button 
-            text="CSS" 
-            className="btn-filter" 
-            onClick={() => {}}
-          />
-        </div>
-        <div>
-          <Button 
-            text="Html" 
-            className="btn-filter" 
-            onClick={() => {}}
-          />
-          <Button 
-            text="Javascript" 
-            className="btn-filter" 
-            onClick={() => {}}
-          />
-          <Button 
-            text="React" 
-            className="btn-filter" 
-            onClick={() => {}}
-          />
+        {getUniqueTechnologies(data).map(tech => (
+                        <Button 
+                            key={tech} 
+                            text={tech} 
+                            className="btn-filter" 
+                            onClick={() => handleFilter(tech)}
+                        />
+                    ))}
           </div>
       </section>
       <section className='contenu-page'>
@@ -79,7 +54,7 @@ function App() {
           </div>
           <img src="./src/assets/test.png" alt="Représentation en dessin de votre développeuse Web Front" className='dessin'/>
         </div>
-        <article className='section-contact'>
+        <article className='section-contact' id='contact'>
           <h2 className='fancy-text'>Me contacter</h2>
           <FormContact></FormContact>
         </article>
