@@ -3,7 +3,8 @@ import Button from "../Components/Button";
 
 const FormContact = () => {
     return (
-        <form>
+        <form action="https://formspree.io/f/xqakkbyl"
+        method="POST">
             <label htmlFor="Nom ou entreprise" className='visually-hidden'>Votre nom ou le nom de l'entreprise</label>
             <input type="text" id="nom-entreprise" name="Nom ou entreprise" placeholder="Votre nom ou votre entreprise" required />
             <label htmlFor="Email" className='visually-hidden'>Votre adresse email</label>
@@ -13,7 +14,7 @@ const FormContact = () => {
             <Button 
             text="Envoyer" 
             className="btn-form" 
-            onClick={() => {}}
+            type="submit"
           />
         </form>
     )
