@@ -8,6 +8,8 @@ import NavBar from './Containers/NavBar';
 import Button from './Components/Button';
 import FormContact from './Containers/FormContact';
 
+import Card from './Components/Card';
+
 
 function App() {
   const [selectedTech, setSelectedTech] = useState(null);
@@ -58,9 +60,15 @@ function App() {
           <h2 className='fancy-text'>Me contacter</h2>
           <FormContact></FormContact>
         </article>
-
       </section>
+      <div>
+        <Card></Card>
+        <Card></Card>
+      </div>
     </main>
+    <footer>
+      
+    </footer>
       
     </>
   )
