@@ -17,3 +17,8 @@ export const filterProjectsByTechnology = (data, selectedTech) => {
         ? data.filter(item => item.technologie.includes(selectedTech))
         : data;
 };
+
+// Retourner les projets filtrés selon la technologie ou tous les projets si aucune n'est sélectionnée
+export const getFilteredProjects = (data, selectedTech) => {
+    return selectedTech ? filterProjectsByTechnology(data, selectedTech) : data;
+  };

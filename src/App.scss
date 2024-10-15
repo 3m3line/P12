@@ -1,12 +1,18 @@
 main{
     margin: 3% 4%;
     .filters{
-        div{
+        text-align: center;
+        .btn-tous{
+            width: 100%;
+            margin-bottom: 8px;
+        }
+        .filter-contenant{
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             .btn-filter{
                 margin: 0 5px 8px;
+                width: 170px;
             }
         }
     }
@@ -58,6 +64,14 @@ main{
             h2{
                 text-align: right;
             }
+        }
+        .project-cards{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 5%;
+            gap: 5vw;
+            width: 100%;
         }
     }
 }

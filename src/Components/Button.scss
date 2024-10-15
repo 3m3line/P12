@@ -10,9 +10,8 @@ button {
     font-weight: 600;
     border-radius: 10px;
     transition: background-color 0.3s;
-    width: 170px;
   
-    &:hover,&:active  {
+    &:hover,&:active, &.active  {
       background-color: white; 
       color: #363537;
       border-color: #363537;
