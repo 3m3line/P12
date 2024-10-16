@@ -10,6 +10,8 @@ import FormContact from './Containers/FormContact';
 
 import Card from './Components/Card';
 
+import FilterButtons from './Containers/FilterButton';
+
 
 function App() {
   const [selectedTech, setSelectedTech] = useState(null); //Technologie sélectionnée
@@ -34,25 +36,14 @@ function App() {
     <main>
       <h1 className='visually-hidden'></h1>
       <section className='filters'>
-        <h2 className='visually-hidden'>Choisissez un tag pour filtrer les technologies</h2>
-        <div>
-          <Button
-            key="Tous"
-            text="Tous les projets"
-            className={`btn-tous ${showProjects && selectedTech === null ? 'active' : ''}`}
-            onClick={handleShowAll}
+        <h2 className='visually-hidden'>Choisissez un tag pour filtrer les technologies</h2>             
+          <FilterButtons 
+            data={data} 
+            selectedTech={selectedTech} 
+            handleFilter={handleFilter} 
+            handleShowAll={handleShowAll} 
+            showProjects={showProjects}
           />
-        <div className='filter-contenant'>
-        {getUniqueTechnologies(data).map(tech => (
-                        <Button 
-                            key={tech} 
-                            text={tech} 
-                            className={`btn-filter ${selectedTech === tech ? 'active' : ''}`} 
-                            onClick={() => handleFilter(tech)}
-                        />
-                    ))}
-          </div>
-          </div>
       </section>
       <section className='contenu-page'>
         {/* Si aucun projet filtré, affiche : */}
