@@ -2,11 +2,13 @@ import Button from '../Components/Button';
 import { getUniqueTechnologies} from '../Fonctions/dataFiltres'
 
 const FilterButtons = ({ data = [], selectedTech, handleFilter, handleShowAll, showProjects }) =>{
-//   const halfIndex = Math.ceil(getUniqueTechnologies(data).length / 2); // Calcule l'index de séparation
-  const halfIndex = Math.ceil(["Tous", ...getUniqueTechnologies(data)].length / 2)
-  
-  const firstRow = ["Tous", ...getUniqueTechnologies(data)].slice(0, halfIndex); // Boutons pour la première ligne
-  const secondRow = ["Tous", ...getUniqueTechnologies(data)].slice(halfIndex);  // Boutons pour la deuxième ligne
+
+  // Fonction pour faire la mise en forme
+  //   const halfIndex = Math.ceil(getUniqueTechnologies(data).length / 2); // Calcule l'index de séparation
+  const allTechnologies = ["Tous", ...data];
+  const halfIndex = Math.ceil(allTechnologies.length / 2)
+    const firstRow = allTechnologies.slice(0, halfIndex); // Boutons pour la première ligne
+  const secondRow = allTechnologies.slice(halfIndex);  // Boutons pour la deuxième ligne
 
   
 
@@ -21,7 +23,7 @@ const FilterButtons = ({ data = [], selectedTech, handleFilter, handleShowAll, s
         /> */}
       {firstRow.map((tech, index) => (
           <Button
-            key={index}
+            key={tech}
             text={tech}
             className={`btn-filter ${selectedTech === tech || (tech === "Tous" && showProjects && selectedTech === null) ? 'active' : ''}`}
             onClick={tech === "Tous" ? handleShowAll : () => handleFilter(tech)}

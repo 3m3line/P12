@@ -4,15 +4,15 @@ import './NavBar.scss';
 import {getUniqueProjectTypes } from '../Fonctions/dataFiltres'
 import data from '../Projets-BD.json'
 
-const NavBar = () => {
+const NavBar = ({ handleNavClick }) => {
     return (
         <nav>
-            <div><a href="/">Emeline <br></br>Boureaud</a></div>
+            <div><a href="#" onClick={() => handleNavClick('home')}>Emeline <br></br>Boureaud</a></div>
             <ul>
                 {getUniqueProjectTypes(data).map((type, index) => (
-                        <li key={index}>{type}</li>  // Générer un <li> pour chaque type
+                        <li key={index} onClick={() => handleNavClick(type)}>{type}</li>  // Générer un <li> pour chaque type
                     ))}
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" onClick={() => handleNavClick('contact')}>Contact</a></li>
             </ul>
         </nav>
 )}

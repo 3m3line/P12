@@ -5,7 +5,6 @@ import { getUniqueTechnologies, getFilteredProjects } from './Fonctions/dataFilt
 
 import './App.scss';
 import NavBar from './Containers/NavBar';
-import Button from './Components/Button';
 import FormContact from './Containers/FormContact';
 
 import Card from './Components/Card';
@@ -16,7 +15,23 @@ import FilterButtons from './Containers/FilterButton';
 function App() {
   const [selectedTech, setSelectedTech] = useState(null); //Technologie sélectionnée
   const [showProjects, setShowProjects] = useState(false); //Contrôle l'affichage des projets
+  const [selectedType, setSelectedType] = useState(null); // Type de projet sélectionné
 
+  //fonction pour le tri en entonnoir
+  const getProjects = () => {
+    let filteredProjects = data;
+    // Si un type est sélectionné, filtrer par type
+    if (selectedType) {
+      filteredProjects = filteredProjects.filter((data) => data.type === selectedType);
+    }
+    // Ensuite, filtrer par technologie si une technologie est sélectionnée
+    if (selectedTech) {
+      filteredProjects = filteredProjects.filter((data) => data.technologie.includes(selectedTech));
+    }
+    return filteredProjects;
+  };
+
+//pour trier en fonction techno
   const handleFilter = (tech) => {
       setSelectedTech(tech);
       setShowProjects(true);
@@ -28,20 +43,42 @@ function App() {
     setShowProjects(true);
   };
 
+  // Récupérer les technologies disponibles pour le type sélectionné, ou pour tous les projets si aucun type n'est sélectionné
+  const availableTechnologies = selectedType
+    ? getUniqueTechnologies(data.filter((project) => project.type === selectedType)) // Technologies basées uniquement sur le type sélectionné
+    : getUniqueTechnologies(data); // Toutes les technologies si aucun type n'est sélectionné
+
+  //pour le fonctionnement du nav
+  const handleNavClick = (navItem) => {
+    if (navItem === 'home') {
+      setShowProjects(false); // Affiche la page classique (à propos, etc.)
+      setSelectedType(null);  // Réinitialise le type
+      setSelectedTech(null);  // Réinitialise la technologie
+    } else if (navItem === 'contact') {
+      setShowProjects(false); // Affiche la section contact, comme dans la page classique
+      setSelectedType(null);  // Réinitialise le type
+      setSelectedTech(null);  // Réinitialise la technologie
+    } else {
+      setSelectedType(navItem); // Filtre par type de projet
+      setSelectedTech(null); // Réinitialise la technologie
+      setShowProjects(true); // Affiche les projets filtrés par type
+    }
+  };
+
   return (
     <>
     <header>
-      <NavBar></NavBar>
+    <NavBar handleNavClick={handleNavClick} />
     </header>
     <main>
       <h1 className='visually-hidden'></h1>
       <section className='filters'>
         <h2 className='visually-hidden'>Choisissez un tag pour filtrer les technologies</h2>             
           <FilterButtons 
-            data={data} 
-            selectedTech={selectedTech} 
-            handleFilter={handleFilter} 
-            handleShowAll={handleShowAll} 
+            data={availableTechnologies}  // Utilise les technologies filtrées
+            selectedTech={selectedTech}
+            handleFilter={handleFilter}
+            handleShowAll={handleShowAll}
             showProjects={showProjects}
           />
       </section>
@@ -68,13 +105,13 @@ function App() {
         </div>
         <article className='section-contact' id='contact'>
           <h2 className='fancy-text'>Me contacter</h2>
-          <FormContact></FormContact>
+          <FormContact />
         </article>
         </>
       ):(
         <div className="project-cards">
           {/* Si les projets sont filtrés, on affiche les cartes */}
-          {getFilteredProjects(data, selectedTech).map((data) => (
+          {getProjects().map((data) => (
             <Card key={data.id} project={data} />
           ))}
           </div>
