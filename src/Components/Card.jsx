@@ -51,10 +51,18 @@ const HoverCard = ({ project }) => {
         {isModalOpen && (
             <div className="modal-overlay" onClick={handleOverlayClick}>
             <div className="modal-content">
-                <span className="close-modal" onClick={handleCloseModal}>
-                &times;
-                </span>
-                <a href={project.lienSite} target="_blank" rel="noopener noreferrer"><img src={project.cover} alt="image projet" /></a>
+                <div className='close-modal-contenant'>
+                  <span className="close-modal" onClick={handleCloseModal}>
+                  &times;
+                  </span>
+                </div>
+                {project.lienSite ? (
+                  <a href={project.lienSite} target="_blank" rel="noopener noreferrer">
+                      <img src={project.cover} alt="image projet" className='image-lien'/>
+                  </a>
+                ) : (
+                  <img src={project.cover} alt="image projet" />
+                )}
                 <div className='tag-container'>
                   {project.technologie.map((tech, index) => (
                     <Tag key={index} text={tech} />
@@ -63,8 +71,8 @@ const HoverCard = ({ project }) => {
                 <h2>{project.title}</h2>
                 <p>{project.description}</p>
                 <div className='liens-modale'>
-                <a href={project.lienSite} target="_blank" rel="noopener noreferrer">Lien vers le site</a>
-                <a href={project.lienCode} target="_blank" rel="noopener noreferrer">Lien vers le code</a>
+                  <div className='lienSite'><a href={project.lienSite} target="_blank" rel="noopener noreferrer" className={project.lienSite === '' ? 'visually-hidden' : ''}>Lien vers le site</a></div>
+                  <div className='lienCode'><a href={project.lienCode} target="_blank" rel="noopener noreferrer" className={project.lienCode === '' ? 'visually-hidden' : ''}>Lien vers le code</a></div>
                 </div>
             </div>
             </div>

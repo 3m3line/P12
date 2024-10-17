@@ -16,7 +16,8 @@ body {
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(243deg, #E26A6A 0.02%, #FF6F61 46.01%, #F0C27B 100%);
+  /* background: linear-gradient(243deg, #E66457 0.02%, #FF6F61 46.01%, #F0C27B 100%); */
+  background: linear-gradient(to left bottom, #c94a4a, #ce4f4c, #d4534f, #da5851, #df5d54, #e36855, #e77256, #eb7d58, #ed8f5c, #efa164, #efb26e, #f0c27b);
   margin: 0;
   padding: 0;
 }
