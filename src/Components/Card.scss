@@ -22,22 +22,24 @@
 }
 .modal-content {
     background-color: white;
-    padding: 3%;
+    padding: 50px;
+    padding-right: 15px;
     border-radius: 10px;
     position: relative;
     width: 600px;
-    max-height: 650px;
-    overflow-y: auto;
+    max-height: 530px;
+    // overflow-y: auto;
     // max-width: 80%;
     // text-align: center;
+
     .close-modal-contenant{
         position: sticky;
         top: 0px;
         right: 8px;
         .close-modal {
             position: absolute;
-            top: -46px;
-            right: -34px;
+            top: -53px;
+            right: -3px;
             font-size: 50px;
             font-weight: bold;
             cursor: pointer;
@@ -46,31 +48,38 @@
             }
         }
     }
-    img{
-        height: 300px;
-        width: 100%;
-        border: 1px solid #363537;
-        box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
-    }
-    .image-lien:hover{
-        border: 1px solid #C94A4A;
-    }
-    .tag-container, h2, p, .liens-modale{
-        margin-top: 5%;
-    }
-    p{
-        text-align: justify;
-    }
-    .liens-modale{
-        display: flex;
-        justify-content: space-between;
-        .lienSite, .lienCode{
-            a{
-                color: #C94A4A;
-            }
-            a:hover{
-                text-decoration: underline;
-            }
-        }  
+    .modal-overflow{
+        max-height: 530px;
+        overflow-y: auto;
+        padding-right: 35px;
+        scrollbar-width: thin;
+        scrollbar-color: #C94A4A transparent;
+        img{
+            height: 300px;
+            width: 100%;
+            border: 1px solid #363537;
+            box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+        }
+        .image-lien:hover{
+            border: 1px solid #C94A4A;
+        }
+        .tag-container, h2, p, .liens-modale{
+            margin-top: 5%;
+        }
+        p{
+            text-align: justify;
+        }
+        .liens-modale{
+            display: flex;
+            justify-content: space-between;
+            .lienSite, .lienCode{
+                a{
+                    color: #C94A4A;
+                }
+                a:hover{
+                    text-decoration: underline;
+                }
+            }  
+        }
     }
 }
