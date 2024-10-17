@@ -68,7 +68,7 @@ function App() {
   return (
     <>
     <header>
-    <NavBar handleNavClick={handleNavClick} />
+    <NavBar handleNavClick={handleNavClick} selectedType={selectedType}/>
     </header>
     <main>
       <h1 className='visually-hidden'></h1>
