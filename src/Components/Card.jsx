@@ -43,7 +43,7 @@ const HoverCard = ({ project }) => {
             <img
                 src={isHovered ? project.cover : project.dessin }
                 alt={isHovered ? 'Photo' : 'Dessin'}
-                className="card-image"
+                className={`card-image ${isHovered ? 'hovered' : ''}`}
             />
         </div>
 

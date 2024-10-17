@@ -1,7 +1,11 @@
 .card{
     width: 47%;
-    img{
+    .card-image{
         width: 100%;
+        transition: border 0.3s ease;
+    }
+    .hovered {
+        border: 1px solid #363537;
     }
 }
 .modal-overlay {
