@@ -1,0 +1,17 @@
+.texteCard{
+    p{
+        text-align: justify;
+    }
+    .subtitle-card{
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+    .listeCard {
+        text-align: justify; /* Justifie le texte des <li> */
+        .elt-listeCard {
+            margin-bottom: 8px; /* Espacement entre les éléments de la liste */
+          }
+      }
+      
+      
+}

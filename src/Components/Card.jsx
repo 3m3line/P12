@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Card.scss'
 import Tag from './Tag'
+import FormatDescription from '../Fonctions/FormatDescriptionCard'
 
 const HoverCard = ({ project }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -70,7 +71,8 @@ const HoverCard = ({ project }) => {
                     ))}
                   </div>
                   <h2>{project.title}</h2>
-                  <p>{project.description}</p>
+                  {/* <p>{project.description}</p> */}
+                  <FormatDescription description={project.description} />
                   <div className='liens-modale'>
                     <div className='lienSite'><a href={project.lienSite} target="_blank" rel="noopener noreferrer" className={project.lienSite === '' ? 'visually-hidden' : ''}>Lien vers le site</a></div>
                     <div className='lienCode'><a href={project.lienCode} target="_blank" rel="noopener noreferrer" className={project.lienCode === '' ? 'visually-hidden' : ''}>Lien vers le code</a></div>
