@@ -30,13 +30,20 @@ main{
             .texte-intro{
                 text-align: justify;
                 font-size: 29px;
+                span{
+                    cursor: pointer;
+                    font-weight: 500;
+                    &:hover{
+                        color: white;
+                    }
+                }
             }
             .en-savoir-plus{
                 margin-top: 20px;
                 cursor: pointer;
                 text-decoration: underline;
                 &:hover{
-                    color:#C94A4A
+                    color: white
                 }
             }
             .info-supp{

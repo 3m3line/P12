@@ -96,8 +96,8 @@ function App() {
          <>
         <article className='section-a-propos'>
           <p className='fancy-text'>Salut !</p>
-          <p className='texte-intro'>Je m’appelle Emeline et je suis développeuse web front-end, passionnée par la création de sites funs et accessibles à tous. 
-            < br/> Contactez-moi pour donner vie à vos idées !
+          <p className='texte-intro'>Je m’appelle <span>EMELINE</span> et je suis développeuse web front-end, passionnée par la création de sites <span>FUNS</span> et accessibles à tous. 
+            < br/> Contactez-moi pour donner vie à vos <span>IDEES</span> !
           </p>
           {/* Ajout du texte détaillé */}
           <p onClick={toggleShowMore} className="en-savoir-plus">
