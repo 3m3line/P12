@@ -13,6 +13,12 @@ main{
                 min-width: 170px;
             }
         }
+        p{
+            line-height: 68px;
+            &.hide{
+                display: none;
+            }
+        }
     }
     .contenu-page{
         display: flex;
@@ -21,8 +27,19 @@ main{
         margin-bottom: 3%;
         .section-a-propos{
             width: 33.33%;
-            margin-top: 6%;
-            p{
+            .texte-intro{
+                text-align: justify;
+                font-size: 29px;
+            }
+            .en-savoir-plus{
+                margin-top: 20px;
+                cursor: pointer;
+                text-decoration: underline;
+                &:hover{
+                    color:#C94A4A
+                }
+            }
+            .info-supp{
                 text-align: justify;
             }
         }
@@ -32,9 +49,6 @@ main{
             flex-direction: column;
             align-items: center;
             margin: 0 2%;
-            h2{
-                line-height: 1;
-            }
             div{
                 display: flex;
                 justify-content: center;
@@ -58,7 +72,6 @@ main{
         }
         .section-contact{
             width: 33.33%;
-            margin-top: 6%;
             h2{
                 text-align: right;
             }

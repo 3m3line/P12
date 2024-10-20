@@ -17,6 +17,7 @@ function App() {
   const [selectedTech, setSelectedTech] = useState(null); //Technologie sélectionnée
   const [showProjects, setShowProjects] = useState(false); //Contrôle l'affichage des projets
   const [selectedType, setSelectedType] = useState(null); // Type de projet sélectionné
+  const [showMore, setShowMore] = useState(false); // État pour afficher plus d'infos
 
   //fonction pour le tri en entonnoir
   const getProjects = () => {
@@ -66,6 +67,11 @@ function App() {
     }
   };
 
+  // Fonction pour afficher ou masquer l'encart d'information supplémentaire
+  const toggleShowMore = () => {
+    setShowMore((prev) => !prev);
+  };
+
   return (
     <>
     <header>
@@ -82,21 +88,33 @@ function App() {
             handleShowAll={handleShowAll}
             showProjects={showProjects}
           />
+          <p className={`fancy-text ${!showProjects ? ' ' : 'hide' }`}>Skills</p>  
       </section>
       <section className='contenu-page'>
         {/* Si aucun projet filtré, affiche : */}
       {!showProjects ? (
          <>
         <article className='section-a-propos'>
-          <h2 className='fancy-text'>A propos</h2>
-          <p>Après plusieurs années en tant que chef de projet, notamment en gestion de projets web, j'ai choisi de me réorienter vers le développement pour réaliser moi-même des sites de A à Z. Aujourd'hui, en tant que développeuse front-end freelance, je combine mes compétences en gestion de projet et mon expertise technique pour concevoir des sites sur mesure, parfaitement adaptés aux besoins de mes clients.
-          <br />
-          <br />Spécialisée en front-end, je tends à élargir mes compétences vers le full stack. Mon objectif est de créer des sites à la fois esthétiques et fonctionnels, tout en intégrant des pratiques d'accessibilité et une approche "green web", favorisant une utilisation raisonnée des ressources.
-          <br />
-          <br />Si vous cherchez une développeuse capable de transformer vos idées en réalité tout en optimisant chaque détail, je serais ravie de discuter de votre projet.</p>
+          <p className='fancy-text'>Salut !</p>
+          <p className='texte-intro'>Je m’appelle Emeline et je suis développeuse web front-end, passionnée par la création de sites funs et accessibles à tous. 
+            < br/> Contactez-moi pour donner vie à vos idées !
+          </p>
+          {/* Ajout du texte détaillé */}
+          <p onClick={toggleShowMore} className="en-savoir-plus">
+                  {showMore ? 'Voir moins' : 'En savoir plus'}
+                </p>
+                {showMore && (
+                  <div className='info-supp'>
+                    <p>
+                    Après plusieurs années en tant que chef de projet, notamment en gestion de projets web, j’ai souhaité réaliser mes sites de A à Z et suis devenue développeuse web frontend. 
+                    < br/>Aujourd'hui, en freelance, je combine mes compétences en gestion de projet avec mon expertise technique pour concevoir des sites sur mesure, parfaitement adaptés à vos besoins.
+                    < br/>Bien que spécialisée en frontend, j’élargis mes compétences vers le full stack. Mon objectif est de créer des sites esthétiques et fonctionnels, tout en intégrant des pratiques d'accessibilité et une approche "green web" favorisant une utilisation raisonnée des ressources.
+                    < br/>Si vous cherchez une développeuse capable de transformer vos idées en réalité tout en optimisant chaque détail, je serais ravie de discuter de votre projet.
+                    </p>
+                  </div>
+                )}
         </article>
         <div className='image-presentation'>
-          <h2 className='fancy-text'>Skills</h2>
           <div>
             <img src="./src/assets/fleche-gauche.png" alt="fleche" className='fleche-gauche'/>
             <img src="./src/assets/fleche-haut.png" alt="fleche" className='fleche-haut'/>
