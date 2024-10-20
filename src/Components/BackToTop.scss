@@ -1,0 +1,13 @@
+.back-to-top {
+    position: fixed;
+    bottom: 15px;
+    right: 4px;
+    z-index: 1000;
+    display: none;
+    img{
+        width: 50px;
+    }
+}
+.back-to-top.show {
+    display: block;
+}

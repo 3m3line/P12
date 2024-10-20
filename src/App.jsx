@@ -10,6 +10,7 @@ import FormContact from './Containers/FormContact';
 import Card from './Components/Card';
 
 import FilterButtons from './Containers/FilterButton';
+import BackToTop from './Components/BackToTop';
 
 
 function App() {
@@ -119,6 +120,7 @@ function App() {
       </section>
     </main>
     <footer>
+      <BackToTop />
       <div>
         <p>© Emeline Boureaud, 2024. Tous droits réservés.</p>
         <p>|</p>
