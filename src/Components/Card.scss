@@ -66,6 +66,7 @@
         max-height: 530px;
         overflow-y: auto;
         padding-right: 35px;
+        // Firefox, Edge, chrome
         scrollbar-width: thin;
         scrollbar-color: #C94A4A transparent;
         img{
@@ -80,7 +81,7 @@
         .tag-container, h2, p, .liens-modale{
             margin-top: 5%;
         }
-        p{
+        p, h2{
             text-align: justify;
         }
         .liens-modale{

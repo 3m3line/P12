@@ -101,7 +101,7 @@ function App() {
             <img src="./src/assets/fleche-haut.png" alt="fleche" className='fleche-haut'/>
             <img src="./src/assets/fleche-droite.png" alt="fleche" className='fleche-droite'/>
           </div>
-          <img src="./src/assets/test.png" alt="Représentation en dessin de votre développeuse Web Front" className='dessin'/>
+          <img src="./src/assets/test.png" alt="Représentation en dessin de votre développeuse Web Front, réalisée par Domicercle" title="Illustration réalisée par Domicercle (lien dans le footer)" className='dessin'/>
         </div>
         <article className='section-contact' id='contact'>
           <h2 className='fancy-text'>Me contacter</h2>
@@ -119,7 +119,11 @@ function App() {
       </section>
     </main>
     <footer>
-      
+      <div>
+        <p>© Emeline Boureaud, 2024. Tous droits réservés.</p>
+        <p>|</p>
+        <p>Illustration réalisée par <a href="https://linktr.ee/domicercle" target="_blank" rel="noopener noreferrer">Domicercle</a></p>
+      </div>
     </footer>
       
     </>

@@ -1,4 +1,5 @@
 main{
+    flex:1;
     margin: 3% 4%;
     .filters{
         text-align: center;
@@ -69,6 +70,22 @@ main{
             margin-top: 5%;
             gap: 5vw;
             width: 100%;
+        }
+    }
+}
+footer{
+    margin-bottom: 1%;
+    div{
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        color: #363537;
+        font-style: italic;
+        a{
+            text-decoration: underline;
+            &:hover{
+                color:#C94A4A;
+            }
         }
     }
 }
