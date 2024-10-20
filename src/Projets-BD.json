@@ -97,7 +97,7 @@
         "id": "6",
         "title": "Projet de site pour une association",
         "cover": "./src/assets/images-projet/asl-les-cottages_image.png",
-        "dessin":"./src/assets/images-projet/asl-les-cottages_DESSIN.png",
+        "dessin":"./src/assets/images-projet/asl-les-cottages-dessin.png",
         "description": "OBJECTIF: L'objectif de ce projet était de concevoir et de développer un site web pour une Association Syndicale Libre (ASL) regroupant un ensemble immobilier de maisons. Le site devait permettre aux membres de l'ASL d'accéder facilement à des informations clés, tout en offrant une interface utilisateur claire et intuitive. Il comprenait notamment une page d'accueil présentant l'ASL, une section pour les questions fréquentes, un espace sécurisé pour accéder aux documents de l'ASL, une page de contact, ainsi qu'une intégration des communications d'un groupe Facebook.\nMA CONTRIBUTION :\n- Design complet du site : Création de l'identité visuelle du site, y compris les choix de couleurs, typographie, et design des visuels personnalisés.\n- Développement avec WordPress : Conception et mise en place du site web via le CMS WordPress, assurant une gestion facile des contenus pour les administrateurs de l'ASL.\n- Espace sécurisé pour les membres : Mise en place d'un système de connexion pour permettre aux utilisateurs d'accéder aux documents essentiels (procès-verbaux, convocations, règlement de copropriété).",
         "type": "Site Web",
         "lienSite": "https://asl-lescottages.fr/",

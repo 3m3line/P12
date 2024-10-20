@@ -112,7 +112,7 @@ function App() {
         <div className="project-cards">
           {/* Si les projets sont filtrés, on affiche les cartes */}
           {getProjects().map((data) => (
-            <Card key={data.id} project={data} />
+            <Card key={data.id} project={data} index={data.id} />
           ))}
           </div>
           )}

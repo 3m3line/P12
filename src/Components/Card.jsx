@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef  } from 'react';
 import './Card.scss'
 import Tag from './Tag'
 import FormatDescription from '../Fonctions/FormatDescriptionCard'
 
-const HoverCard = ({ project }) => {
+const HoverCard = ({ project, index }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [visibilityRatio, setVisibilityRatio] = useState(0); 
+
+  const cardRef = useRef(null); // Référence à la carte pour l'Observer
 
   // Gére les événements de survol
   const handleMouseEnter = () => {
@@ -31,10 +34,46 @@ const HoverCard = ({ project }) => {
             handleCloseModal();
         }
     };
+    
+    // Utiliser Intersection Observer pour gérer la visibilité de la carte
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const ratio = entry.intersectionRatio;
+            const bounding = entry.boundingClientRect;
+            const rootBounds = entry.rootBounds;
+  
+            setVisibilityRatio(ratio);
+  
+            if (cardRef.current) {
+              if (ratio >= 0.99) {
+                // Si la carte est entièrement visible, retirer le dégradé
+                cardRef.current.style.setProperty('mask-image', 'none');
+              } else if (bounding.top >= rootBounds.top) {
+                // Si la carte entre ou sort par le bas, appliquer le dégradé
+                cardRef.current.style.setProperty(
+                  'mask-image',
+                  `linear-gradient(to top, rgba(0, 0, 0, 0) ${((1 - ratio) * 100)}%, rgba(0, 0, 0, 1) 100%)`
+                );
+              } else {
+                // Si la carte entre ou sort par le haut, retirer le dégradé
+                cardRef.current.style.setProperty('mask-image', 'none');
+              }
+            }
+          });
+        },
+        { threshold: Array.from({ length: 101 }, (_, i) => i / 100) }
+      );
+  
+      if (cardRef.current) observer.observe(cardRef.current);
+      return () => observer.disconnect();
+    }, []);
 
   return (
     <>
         <div
+        ref={cardRef}
         className="card"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
