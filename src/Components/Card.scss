@@ -98,3 +98,40 @@
         }
     }
 }
+
+@media (max-width: 755px){
+    .card{
+        width: 100%;
+    }
+    .modal-content{
+        width: 80%;
+        padding: 6vw;
+        padding-right: 1vw;
+        .close-modal-contenant{
+            .close-modal{
+                top: -7vw;
+                right: 0vw;
+                font-size: 6vw;
+            }
+        }
+        .modal-overflow{
+            padding-right: 5vw;
+            img{
+                height: 50vw;
+            }
+            h2{
+                text-align: left;
+                font-size: 5vw;
+            }
+            p, ul, h3{
+                font-size: 4vw;
+            }
+            .liens-modale{
+                a{
+                    font-size: 4vw;
+                    text-decoration: underline;
+                }                
+            }
+        }
+    }
+}

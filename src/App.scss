@@ -28,8 +28,7 @@ main{
         .section-a-propos{
             width: 33.33%;
             .texte-intro{
-                text-align: justify;
-                font-size: 29px;
+                font-size: 2.1vw;
                 span{
                     cursor: pointer;
                     font-weight: 500;
@@ -59,8 +58,10 @@ main{
             div{
                 display: flex;
                 justify-content: center;
-                height: 80px;
                 position: relative;
+                .fleche{
+                    height: 7vw;
+                }
                 .fleche-gauche{
                     position: relative;
                     top: 28vh;
@@ -69,12 +70,12 @@ main{
                 .fleche-droite{
                     position: relative;
                     top: 27vh;
-                    left: 8vw;
+                    left: 7vw;
                 }
             }
             .dessin{
-                height: 50vh;
-                max-height: 500px;
+                max-width: 320px;
+                width: 20vw
             }
         }
         .section-contact{
@@ -110,3 +111,110 @@ footer{
     }
 }
 
+@media (max-width: 1025px) {
+    main{
+        .contenu-page{
+            margin-top: 4%;
+            flex-wrap: wrap;
+            .section-a-propos{
+                width: 52%;
+                margin: 0 4%;
+            }
+            .image-presentation{
+                width: 33%;
+                .fleche{
+                    display: none;
+                }
+                .dessin{
+                    width: 25vw;
+                }
+            } 
+            .section-contact{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 4%;
+                form{
+                    width: 66vw;
+                    max-width: 585px;
+                }
+            }   
+        }
+    } 
+}
+
+@media (max-width: 755px){
+    main{
+        .contenu-page{
+            margin-top: 0%;
+            .section-a-propos{
+                width: 100%;
+                margin: 0 6% 2%;
+                .texte-intro{
+                    font-size: 3.5vw;
+                    text-align: justify;
+                }
+            }
+            .image-presentation{
+                width: 100%;
+                .dessin{
+                    width: 25vw;
+                }
+            } 
+            .section-contact{
+                margin: 2% 6% 0;
+                align-items: normal;
+                form{
+                    width: 100%;
+                    max-width: 100%;
+                }
+
+            }   
+        }
+
+    }
+    footer{
+        div{
+            flex-direction: column;
+            align-items: center;
+            gap: 0px;
+            .barre-separation-footer{
+                display: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 550px){
+    main{
+        .contenu-page{
+            .section-a-propos{
+                .texte-intro{
+                    font-size: 6vw;
+                    text-align: left;
+                    span{
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+footer{
+    div{
+        p{
+            font-size: 3vw;
+        }
+    }
+}
+}
+
+@media (max-width: 410px) {
+    main {
+        .contenu-page {
+            .section-contact{
+                margin: 2% 0 0;
+            }
+        }
+    }
+}

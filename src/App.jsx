@@ -52,6 +52,7 @@ function App() {
 
   //pour le fonctionnement du nav
   const handleNavClick = (navItem) => {
+    setShowMore(false); // Réinitialise info-supp à chaque navigation
     if (navItem === 'home') {
       setShowProjects(false); // Affiche la page classique (à propos, etc.)
       setSelectedType(null);  // Réinitialise le type
@@ -116,9 +117,9 @@ function App() {
         </article>
         <div className='image-presentation'>
           <div>
-            <img src="./src/assets/fleche-gauche.png" alt="fleche" className='fleche-gauche'/>
-            <img src="./src/assets/fleche-haut.png" alt="fleche" className='fleche-haut'/>
-            <img src="./src/assets/fleche-droite.png" alt="fleche" className='fleche-droite'/>
+            <img src="./src/assets/fleche-gauche.png" alt="fleche" className='fleche-gauche fleche'/>
+            <img src="./src/assets/fleche-haut.png" alt="fleche" className='fleche-haut fleche'/>
+            <img src="./src/assets/fleche-droite.png" alt="fleche" className='fleche-droite fleche'/>
           </div>
           <img src="./src/assets/test.png" alt="Représentation en dessin de votre développeuse Web Front, réalisée par Domicercle" title="Illustration réalisée par Domicercle (lien dans le footer)" className='dessin'/>
         </div>
@@ -141,7 +142,7 @@ function App() {
       <BackToTop />
       <div>
         <p>© Emeline Boureaud, 2024. Tous droits réservés.</p>
-        <p>|</p>
+        <p className='barre-separation-footer'>|</p>
         <p>Illustration réalisée par <a href="https://linktr.ee/domicercle" target="_blank" rel="noopener noreferrer">Domicercle</a></p>
       </div>
     </footer>
