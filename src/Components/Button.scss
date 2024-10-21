@@ -19,3 +19,18 @@ button {
       cursor: pointer;
     }
 }
+
+@media (max-width: 1000px) {
+  button{
+    padding: 7px 10px;
+  }
+}
+
+@media (max-width: 756px){
+  button{
+    font-size: 2vw;
+    padding: 0.9vw 3.5vw;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+  }
+}

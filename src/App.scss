@@ -3,6 +3,9 @@ main{
     margin: 3% 4%;
     .filters{
         text-align: center;
+        .skills-toggle{
+            cursor: pointer;
+        }
         .btn-tous{
             width: 100%;
             margin-bottom: 8px;
@@ -144,8 +147,45 @@ footer{
     } 
 }
 
-@media (max-width: 755px){
+@media (max-width:1000px){
     main{
+        .filters{
+            .filter-contenant{
+                .btn-filter{
+                    min-width: 150px;
+                }}}}
+}
+@media (max-width: 756px){
+    main{
+        .filters{
+            .skills-toggle{
+                cursor: pointer;
+                font-size: 6vw;
+                color: white;  
+                position: relative;
+                line-height: 11vw;
+                .triangle{
+                    font-size: 6vw;
+                    color: white;
+                    position: absolute;
+                    top: 1vw;
+                  } 
+            }  
+            .filter-contenant{
+                margin-bottom: 2vw;
+                .btn-ligne{
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    gap : 0.5vw;
+                    .btn-filter{
+                        min-width: 0;
+                        margin: 0;
+                    }
+                }
+                
+            }
+        }
         .contenu-page{
             margin-top: 0%;
             .section-a-propos{
@@ -185,7 +225,18 @@ footer{
         }
     }
 }
-
+@media (max-width: 600px){
+    main{
+        .filters{
+            .skills-toggle{
+                .triangle{
+                    font-size: 11vw;
+                    top : 1.5vw
+                  } 
+            } 
+        }
+    }
+}
 @media (max-width: 550px){
     main{
         .contenu-page{

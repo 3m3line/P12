@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import data from './Projets-BD.json'
 import { getUniqueTechnologies, getFilteredProjects } from './Fonctions/dataFiltres'
@@ -18,8 +18,10 @@ function App() {
   const [showProjects, setShowProjects] = useState(false); //Contrôle l'affichage des projets
   const [selectedType, setSelectedType] = useState(null); // Type de projet sélectionné
   const [showMore, setShowMore] = useState(false); // État pour afficher plus d'infos
+  const [showFilter, setShowFilter] = useState(false); //etat pour le collapse des skills
+  const [isFilterOpen, setIsFilterOpen] = useState(false); //eat pour savoir si collapse skill ouvert
 
-  //fonction pour le tri en entonnoir
+    //fonction pour le tri en entonnoir
   const getProjects = () => {
     let filteredProjects = data;
     // Si un type est sélectionné, filtrer par type
@@ -73,6 +75,33 @@ function App() {
     setShowMore((prev) => !prev);
   };
 
+
+  
+  // Fonction pour gérer la taille de l'écran
+  const handleResize = () => {
+    if (window.innerWidth > 755) {
+      setShowFilter(true); // Montre les filtres sur écrans larges
+    } else {
+      setShowFilter(false); // Cache les filtres sur petits écrans
+    }
+  };
+
+  // Ajout d'un écouteur d'événements pour redimensionner
+  useEffect(() => {
+    handleResize(); // Appel initial
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  //fonction pour afficher les filtres en collapse pour les tel
+  const toggleFilter = () => {
+    setShowFilter(prev => !prev); // Bascule l'affichage des filtres
+    setIsFilterOpen(!isFilterOpen); // Inverser l'état du triangle en fonction de l'ouverture ou non
+  };
+
   return (
     <>
     <header>
@@ -82,14 +111,20 @@ function App() {
       <h1 className='visually-hidden'></h1>
       <section className='filters'>
         <h2 className='visually-hidden'>Choisissez un tag pour filtrer les technologies</h2>             
+        {window.innerWidth <= 755 && ( // Affiche le bouton uniquement sur petits écrans
+          <p onClick={toggleFilter} className=" skills-toggle"><span className='fancy-text'>Skills</span>
+          <span className="triangle">{isFilterOpen ? '▴' : '▾'}</span></p>
+        )}
+        {(showFilter || window.innerWidth > 755) && ( // Affiche les boutons de filtre
           <FilterButtons 
             data={availableTechnologies}  // Utilise les technologies filtrées
             selectedTech={selectedTech}
             handleFilter={handleFilter}
             handleShowAll={handleShowAll}
             showProjects={showProjects}
-          />
-          <p className={`fancy-text ${!showProjects ? ' ' : 'hide' }`}>Skills</p>  
+          />)}
+          {window.innerWidth > 755 && (
+          <p className={`fancy-text ${!showProjects ? ' ' : 'hide' }`}>Skills</p>)}
       </section>
       <section className='contenu-page'>
         {/* Si aucun projet filtré, affiche : */}

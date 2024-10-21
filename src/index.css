@@ -58,6 +58,8 @@ img {
   color: white;
 }
 
+
+
 @media (max-width: 600px) {
   .fancy-text{
     font-size: 11vw;

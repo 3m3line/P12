@@ -26,11 +26,24 @@ const FilterButtons = ({ data = [], selectedTech, handleFilter, handleShowAll, s
     const allTechnologies = ["Tous", ...data];
 
     const containerWidth = containerRef.current ? containerRef.current.clientWidth : window.innerWidth; // Largeur du conteneur
-    const buttonWidth = 200;
+    //const buttonWidth = 200;
 
     // Calcule le nombre maximal de boutons par ligne (7 max)
-    const maxButtonsPerRow = Math.min(7, Math.floor(containerWidth / buttonWidth));
+    //const maxButtonsPerRow = Math.min(7, Math.floor(containerWidth / buttonWidth));
     
+    let maxButtonsPerRow;
+    if (containerWidth > 1000) {
+      const buttonWidth = 200;
+      maxButtonsPerRow = Math.min(7, Math.floor(containerWidth / buttonWidth)); // 7 boutons pour les écrans larges
+    } else if (containerWidth > 755) {
+      const buttonWidth = 180;
+      maxButtonsPerRow = Math.min(5, Math.floor(containerWidth / buttonWidth)); // 5 boutons pour les écrans intermédiaires
+    } else {
+      maxButtonsPerRow = allTechnologies.length;
+    }
+
+
+
     let rows = [];
     // 1. Répartition initiale des boutons dans les lignes
     for (let i = 0; i < allTechnologies.length; i += maxButtonsPerRow) {
