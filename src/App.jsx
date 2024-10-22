@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 
 import data from './Projets-BD.json'
 import { getUniqueTechnologies, getFilteredProjects } from './Fonctions/dataFiltres'
@@ -20,6 +21,7 @@ function App() {
   const [showMore, setShowMore] = useState(false); // État pour afficher plus d'infos
   const [showFilter, setShowFilter] = useState(false); //etat pour le collapse des skills
   const [isFilterOpen, setIsFilterOpen] = useState(false); //eat pour savoir si collapse skill ouvert
+  const [hasClickedNav, setHasClickedNav] = useState(false); // Suivi des clics de navigation
 
     //fonction pour le tri en entonnoir
   const getProjects = () => {
@@ -39,12 +41,14 @@ function App() {
   const handleFilter = (tech) => {
       setSelectedTech(tech);
       setShowProjects(true);
+      window.location.hash = `#${tech}`;
   };
 
   //pour réinitialisé la techno et afficher tous les projets
   const handleShowAll = () => {
     setSelectedTech(null); 
     setShowProjects(true);
+    window.location.hash = '';
   };
 
   // Récupérer les technologies disponibles pour le type sélectionné, ou pour tous les projets si aucun type n'est sélectionné
@@ -55,18 +59,23 @@ function App() {
   //pour le fonctionnement du nav
   const handleNavClick = (navItem) => {
     setShowMore(false); // Réinitialise info-supp à chaque navigation
+    setHasClickedNav(true);
+
     if (navItem === 'home') {
       setShowProjects(false); // Affiche la page classique (à propos, etc.)
       setSelectedType(null);  // Réinitialise le type
       setSelectedTech(null);  // Réinitialise la technologie
+      window.location.hash = ``;
     } else if (navItem === 'contact') {
       setShowProjects(false); // Affiche la section contact, comme dans la page classique
       setSelectedType(null);  // Réinitialise le type
       setSelectedTech(null);  // Réinitialise la technologie
+      window.location.hash = '#contact';
     } else {
       setSelectedType(navItem); // Filtre par type de projet
       setSelectedTech(null); // Réinitialise la technologie
       setShowProjects(true); // Affiche les projets filtrés par type
+      window.location.hash = ``;
     }
   };
 
@@ -86,7 +95,7 @@ function App() {
     }
   };
 
-  // Ajout d'un écouteur d'événements pour redimensionner
+  //Ajout d'un écouteur d'événements pour redimensionner
   useEffect(() => {
     handleResize(); // Appel initial
     window.addEventListener('resize', handleResize);
@@ -104,6 +113,7 @@ function App() {
 
   return (
     <>
+    <Router>
     <header>
     <NavBar handleNavClick={handleNavClick} selectedType={selectedType}/>
     </header>
@@ -164,7 +174,7 @@ function App() {
         </article>
         </>
       ):(
-        <div className="project-cards">
+        <div id={selectedType || selectedTech || 'Tous'} className="project-cards">
           {/* Si les projets sont filtrés, on affiche les cartes */}
           {getProjects().map((data) => (
             <Card key={data.id} project={data} index={data.id} />
@@ -181,7 +191,7 @@ function App() {
         <p>Illustration réalisée par <a href="https://linktr.ee/domicercle" target="_blank" rel="noopener noreferrer">Domicercle</a></p>
       </div>
     </footer>
-      
+    </Router>
     </>
   )
 }

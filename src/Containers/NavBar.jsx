@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { HashLink as Link } from 'react-router-hash-link';
 import './NavBar.scss';
 
 import {getUniqueProjectTypes } from '../Fonctions/dataFiltres'
@@ -19,6 +20,17 @@ const NavBar = ({ handleNavClick, selectedType }) => {
             setMenuOpen(false); // Fermer le menu
         }
     };
+
+    // Fermer le menu après clic sur un élément du menu
+    const handleMenuClick = (navItem) => {
+        handleNavClick(navItem);  // Appel de la fonction de navigation
+
+        // Vérifier si la largeur de l'écran est celle d'un smartphone et fermer le menu
+        if (window.innerWidth <= 755) {
+            setMenuOpen(false); // Ferme le menu burger
+        }
+    };
+
     useEffect(() => {
         // Ajouter un gestionnaire d'événements de clic sur le document
         document.addEventListener('mousedown', handleClickOutside);
@@ -31,7 +43,7 @@ const NavBar = ({ handleNavClick, selectedType }) => {
 
     return (
         <nav ref={menuRef}>
-            <div><a href="#" onClick={() => handleNavClick('home')}>Emeline <br></br>Boureaud</a></div>
+            <div onClick={() => handleNavClick('home')}>Emeline <br></br>Boureaud</div>
             <div>
             <div className={`burger-icon ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
                 {/* Icône du burger */}
@@ -41,9 +53,10 @@ const NavBar = ({ handleNavClick, selectedType }) => {
             </div>
             <ul className={menuOpen ? 'menu-open' : ''}>
                 {getUniqueProjectTypes(data).map((type, index) => (
-                        <li key={index} className={selectedType === type ? 'active' : ''} onClick={() => handleNavClick(type)}>{type}</li>  // Générer un <li> pour chaque type
+                        <li key={index} className={selectedType === type ? 'active' : ''} onClick={() => handleMenuClick(type)}>{type}</li>  // Générer un <li> pour chaque type
                     ))}
-                <li><a href="#" onClick={() => handleNavClick('contact')}>Contact</a></li>
+                {/* <li><Link to='/#contact'>Contact</Link></li> */}
+                <li><a href="#contact" onClick={() => handleMenuClick('contact')}>Contact</a></li>
             </ul>
             </div>
         </nav>
