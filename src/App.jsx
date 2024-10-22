@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 
 import data from './Projets-BD.json'
 import { getUniqueTechnologies, getFilteredProjects } from './Fonctions/dataFiltres'
@@ -113,7 +112,6 @@ function App() {
 
   return (
     <>
-    <Router>
     <header>
     <NavBar handleNavClick={handleNavClick} selectedType={selectedType}/>
     </header>
@@ -191,7 +189,6 @@ function App() {
         <p>Illustration réalisée par <a href="https://linktr.ee/domicercle" target="_blank" rel="noopener noreferrer">Domicercle</a></p>
       </div>
     </footer>
-    </Router>
     </>
   )
 }

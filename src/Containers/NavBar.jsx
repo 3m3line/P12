@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { HashLink as Link } from 'react-router-hash-link';
 import './NavBar.scss';
 
 import {getUniqueProjectTypes } from '../Fonctions/dataFiltres'
@@ -43,7 +42,7 @@ const NavBar = ({ handleNavClick, selectedType }) => {
 
     return (
         <nav ref={menuRef}>
-            <div onClick={() => handleNavClick('home')}>Emeline <br></br>Boureaud</div>
+            <div onClick={() => handleNavClick('home')} className='logo'>Embo</div>
             <div>
             <div className={`burger-icon ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
                 {/* Icône du burger */}
@@ -55,7 +54,6 @@ const NavBar = ({ handleNavClick, selectedType }) => {
                 {getUniqueProjectTypes(data).map((type, index) => (
                         <li key={index} className={selectedType === type ? 'active' : ''} onClick={() => handleMenuClick(type)}>{type}</li>  // Générer un <li> pour chaque type
                     ))}
-                {/* <li><Link to='/#contact'>Contact</Link></li> */}
                 <li><a href="#contact" onClick={() => handleMenuClick('contact')}>Contact</a></li>
             </ul>
             </div>

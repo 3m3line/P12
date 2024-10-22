@@ -28,9 +28,15 @@ button {
 
 @media (max-width: 756px){
   button{
-    font-size: 2vw;
+    font-size: 2.4vw;
     padding: 0.9vw 3.5vw;
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 5px;
+  }
+}
+
+@media (max-width: 405px){
+  button{
+    font-size: 10px;
   }
 }
