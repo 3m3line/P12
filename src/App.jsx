@@ -162,11 +162,11 @@ function App() {
         </article>
         <div className='image-presentation'>
           <div>
-            <img src="./src/assets/fleche-gauche.png" alt="fleche" className='fleche-gauche fleche'/>
-            <img src="./src/assets/fleche-haut.png" alt="fleche" className='fleche-haut fleche'/>
-            <img src="./src/assets/fleche-droite.png" alt="fleche" className='fleche-droite fleche'/>
+            <img src="/assets/fleche-gauche.png" alt="fleche" className='fleche-gauche fleche'/>
+            <img src="/assets/fleche-haut.png" alt="fleche" className='fleche-haut fleche'/>
+            <img src="/assets/fleche-droite.png" alt="fleche" className='fleche-droite fleche'/>
           </div>
-          <img src="./src/assets/test.png" alt="Représentation en dessin de votre développeuse Web Front, réalisée par Domicercle" title="Illustration réalisée par Domicercle (lien dans le footer)" className='dessin'/>
+          <img src="/assets/ma-representation-by-domicercle.png" alt="Représentation en dessin de votre développeuse Web Front, réalisée par Domicercle" title="Illustration réalisée par Domicercle (lien dans le footer)" className='dessin'/>
         </div>
         <article className='section-contact' id='contact'>
           <h2 className='fancy-text'>Me contacter</h2>

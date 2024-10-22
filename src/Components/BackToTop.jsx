@@ -31,7 +31,7 @@ const BackToTop = () => {
         onMouseEnter={() => setIsHovered(true)} 
         onMouseLeave={() => setIsHovered(false)} 
         style={{ display: visible ? 'block' : 'none' }}>
-            <img src={isHovered ? "./src/assets/back-to-top_hover.svg" : "./src/assets/back-to-top.svg"}
+            <img src={isHovered ? "/assets/back-to-top_hover.svg" : "/assets/back-to-top.svg"}
              alt="arrow back to top" />
         </a>
     );
