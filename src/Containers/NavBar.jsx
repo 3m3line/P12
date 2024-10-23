@@ -41,20 +41,40 @@ const NavBar = ({ handleNavClick, selectedType }) => {
     }, []);
 
     return (
-        <nav ref={menuRef}>
-            <div onClick={() => handleNavClick('home')} className='logo'>Embo</div>
+        <nav ref={menuRef} aria-label="Navigation principale">
+            <div onClick={() => handleNavClick('home')} className='logo'
+                role="button" // Indique que c'est un élément cliquable
+                tabIndex={0} // pour rendre le logo focusable
+                onKeyDown={(e) => e.key === 'Enter' && handleNavClick('home')} // Gestion de l'accessibilité au clavier
+                aria-label="Retour à la page d'accueil">Embo</div>
             <div>
-            <div className={`burger-icon ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+            <div className={`burger-icon ${menuOpen ? 'open' : ''}`} 
+            onClick={toggleMenu}
+            aria-label="Menu" // Ajout de l'aria-label
+                    role="button" // Indique que c'est un élément cliquable
+                    tabIndex={0} // Rendre l'icône burger focusable
+                    onKeyDown={(e) => e.key === 'Enter' && toggleMenu()} // Gestion de l'accessibilité au clavier
+                    >
                 {/* Icône du burger */}
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <ul className={menuOpen ? 'menu-open' : ''}>
+            <ul className={menuOpen ? 'menu-open' : ''} role="menu">
                 {getUniqueProjectTypes(data).map((type, index) => (
-                        <li key={index} className={selectedType === type ? 'active' : ''} onClick={() => handleMenuClick(type)}>{type}</li>  // Générer un <li> pour chaque type
+                        <li key={index} className={selectedType === type ? 'active' : ''} 
+                        onClick={() => handleMenuClick(type)}
+                        role="menuitem" // Indique que c'est un élément de menu
+                            tabIndex={0} // Rendre l'élément de menu focusable
+                            onKeyDown={(e) => e.key === 'Enter' && handleMenuClick(type)} // Gestion de l'accessibilité au clavier
+                            >{type}</li>  // Générer un <li> pour chaque type
                     ))}
-                <li><a href="#contact" onClick={() => handleMenuClick('contact')}>Contact</a></li>
+                <li><a href="#contact" 
+                onClick={() => handleMenuClick('contact')}
+                role="menuitem" // Indique que c'est un élément de menu
+                            tabIndex={0} // Rendre l'élément de menu focusable
+                            onKeyDown={(e) => e.key === 'Enter' && handleMenuClick('contact')} // Gestion de l'accessibilité au clavier
+                            >Contact</a></li>
             </ul>
             </div>
         </nav>

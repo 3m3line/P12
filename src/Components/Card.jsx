@@ -78,6 +78,10 @@ const HoverCard = ({ project, index }) => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={handleCardClick}
+        role="button" // Indique que cet élément est cliquable
+        tabIndex="0" // Rendre l'élément focusable
+        aria-label={`Détails du projet: ${project.title}`} // Aide à comprendre l'élément pour les lecteurs d'écran
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleCardClick()} // Gérer l'accessibilité au clavier
         >
             {/* Affiche l'image selon l'état isHovered */}
             <img
@@ -89,16 +93,16 @@ const HoverCard = ({ project, index }) => {
 
         {/* Modale */}
         {isModalOpen && (
-            <div className="modal-overlay" onClick={handleOverlayClick}>
-            <div className="modal-content">
+            <div className="modal-overlay" onClick={handleOverlayClick} aria-modal="true">
+            <div className="modal-content" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-description">
                 <div className='close-modal-contenant'>
-                  <span className="close-modal" onClick={handleCloseModal}>
+                  <span className="close-modal" onClick={handleCloseModal} aria-label="Fermer la modale">
                   &times;
                   </span>
                 </div>
                 <div className='modal-overflow'>
                   {project.lienSite ? (
-                    <a href={project.lienSite} target="_blank" rel="noopener noreferrer">
+                    <a href={project.lienSite} target="_blank" rel="noopener noreferrer" aria-label={`Visitez le site du projet ${project.title}`}>
                         <img src={project.cover} alt="image projet" className='image-lien'/>
                     </a>
                   ) : (

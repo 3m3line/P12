@@ -112,15 +112,21 @@ function App() {
 
   return (
     <>
-    <header>
+    <header role="banner">
     <NavBar handleNavClick={handleNavClick} selectedType={selectedType}/>
     </header>
     <main>
       <h1 className='visually-hidden'></h1>
-      <section className='filters'>
+      <section className='filters' aria-labelledby="filter-title">
         <h2 className='visually-hidden'>Choisissez un tag pour filtrer les technologies</h2>             
         {window.innerWidth <= 755 && ( // Affiche le bouton uniquement sur petits écrans
-        <div onClick={toggleFilter} className={`container-toogle ${isFilterOpen ? 'toogle-open' : ' '}`}>
+        <div onClick={toggleFilter} 
+        className={`container-toogle ${isFilterOpen ? 'toogle-open' : ' '}`} 
+        role="button" 
+        aria-expanded={isFilterOpen} 
+        aria-controls="filter-buttons"
+        tabIndex="0" // permet la navigation clavier
+        onKeyDown={(e) => e.key === 'Enter' && toggleFilter()}>
           <p className='skills-toggle'><span className='toggle-text'>Skills</span>
           <span className='triangle'>{isFilterOpen ? '▴' : '▾'}</span>
           </p>
@@ -128,6 +134,7 @@ function App() {
         )}
         {(showFilter || window.innerWidth > 755) && ( // Affiche les boutons de filtre
           <FilterButtons 
+            id="filter-buttons"
             data={availableTechnologies}  // Utilise les technologies filtrées
             selectedTech={selectedTech}
             handleFilter={handleFilter}
@@ -147,7 +154,14 @@ function App() {
             < br/> Contactez-moi pour donner vie à vos <span>IDEES</span> !
           </p>
           {/* Ajout du texte détaillé */}
-          <p onClick={toggleShowMore} className="en-savoir-plus">
+          <p 
+          role="button" 
+          aria-expanded={showMore} 
+          aria-controls="additional-info" 
+          tabIndex="0" 
+          onClick={toggleShowMore}
+          onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && toggleShowMore()}
+          className="en-savoir-plus">
                   {showMore ? 'Voir moins' : 'En savoir plus'}
                 </p>
                 {showMore && (
@@ -184,7 +198,7 @@ function App() {
           )}
       </section>
     </main>
-    <footer>
+    <footer role="contentinfo">
       <BackToTop />
       <div>
         <p>© Emeline Boureaud, 2024. Tous droits réservés.</p>

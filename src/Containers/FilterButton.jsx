@@ -73,7 +73,7 @@ const FilterButtons = ({ data = [], selectedTech, handleFilter, handleShowAll, s
     setButtonRows(rows); // Met à jour l'état avec les nouvelles lignes de boutons
   }
   return (
-    <div className="filter-contenant">
+    <div className="filter-contenant" ref={containerRef} aria-label="Filtres par technologie">
       {buttonRows.map((row, rowIndex) => (
         <div className="btn-ligne" key={rowIndex}>
           {row.map(tech => (
@@ -82,6 +82,7 @@ const FilterButtons = ({ data = [], selectedTech, handleFilter, handleShowAll, s
               text={tech}
               className={`btn-filter ${selectedTech === tech || (tech === "Tous" && showProjects && selectedTech === null) ? 'active' : ''}`}
               onClick={tech === "Tous" ? handleShowAll : () => handleFilter(tech)}
+              aria-label={tech === "Tous" ? "Afficher tous les projets" : `Filtrer par technologie ${tech}`} // Aria label pour indiquer la fonction du bouton
             />
           ))}
         </div>

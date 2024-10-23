@@ -32,7 +32,8 @@ const BackToTop = () => {
         onClick={scrollToTop}
         onMouseEnter={() => setIsHovered(true)} 
         onMouseLeave={() => setIsHovered(false)} 
-        style={{ display: visible ? 'block' : 'none' }}>
+        style={{ display: visible ? 'block' : 'none' }}
+        aria-label="Retour en haut de la page">
             <img src={isHovered ? "/assets/back-to-top_hover.svg" : "/assets/back-to-top.svg"}
              alt="arrow back to top" />
         </a>

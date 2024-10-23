@@ -11,11 +11,11 @@ const FormatDescription = ({ description }) => {
         {/* Mise en forme pour la partie "OBJECTIF" */}
         <p>
           <h3 className='subtitle-card'>{objectiveText.split(':')[0]} :</h3>
-          {objectiveText.split(':')[1].trim()}<br /><br />
+          {objectiveText.split(':')[1]?.trim()}<br /><br />
         </p>
         {/* Mise en forme pour "MA CONTRIBUTION" */}
         <h3 className='subtitle-card'>MA CONTRIBUTION :</h3>
-        <ul className="listeCard">
+        <ul className="listeCard" aria-label="Liste des contributions">
           {contributionText.split('- ').map((item, index) => {
             if (item.trim() !== "") {
               return <li className="elt-listeCard" key={index}>- {item.trim()}</li>;
