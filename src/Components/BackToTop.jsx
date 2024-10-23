@@ -22,7 +22,9 @@ const BackToTop = () => {
     }, []);
 
     const scrollToTop = () => {
+        event.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        setIsHovered(false);
     };
 
     return (
