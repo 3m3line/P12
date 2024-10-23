@@ -120,8 +120,11 @@ function App() {
       <section className='filters'>
         <h2 className='visually-hidden'>Choisissez un tag pour filtrer les technologies</h2>             
         {window.innerWidth <= 755 && ( // Affiche le bouton uniquement sur petits écrans
-          <p onClick={toggleFilter} className=" skills-toggle"><span className='fancy-text'>Skills</span>
-          <span className="triangle">{isFilterOpen ? '▴' : '▾'}</span></p>
+        <div onClick={toggleFilter} className={`container-toogle ${isFilterOpen ? 'toogle-open' : ' '}`}>
+          <p className='skills-toggle'><span className='toggle-text'>Skills</span>
+          <span className='triangle'>{isFilterOpen ? '▴' : '▾'}</span>
+          </p>
+          <p className={`explication-toggle ${isFilterOpen ? 'open' : ' '}`}>(Cliquer pour afficher)</p></div>
         )}
         {(showFilter || window.innerWidth > 755) && ( // Affiche les boutons de filtre
           <FilterButtons 
