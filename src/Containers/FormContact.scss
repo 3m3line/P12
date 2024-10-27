@@ -18,7 +18,16 @@ form{
     }
     .btn-form{
         width: 100%;
-        font-size: 15px;
-        padding : 2vw 3.5vw;
+        
+    }
+}
+
+
+@media (max-width: 756px){
+    form{
+        .btn-form{
+            font-size: 15px;
+            padding: 2vw 3.5vw;
+        }
     }
 }

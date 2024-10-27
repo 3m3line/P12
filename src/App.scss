@@ -1,3 +1,26 @@
+//animation EMBO
+@keyframes sway {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-10deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    75% {
+      transform: rotate(-5deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  .sway {
+    animation: sway 1.2s ease-in-out ; // Utilisez 'forwards' pour garder la dernière position de l'animation
+}
+
 main{
     flex:1;
     margin: 3% 4%;
@@ -39,6 +62,17 @@ main{
                         color: white;
                     }
                 }
+                .embo-animate{
+                   transition: transform 0.3s ease;
+                   display: inline-block;
+                    &:hover, 
+                    &:active {
+                        animation: sway 0.6s ease-in-out 2;
+                    }
+                }
+                .embo-animate-click, .embo-animate-click{
+                    animation: sway 0.6s ease-in-out 2;
+                  }
             }
             .en-savoir-plus{
                 margin-top: 20px;
@@ -78,7 +112,8 @@ main{
             }
             .dessin{
                 max-width: 320px;
-                width: 20vw
+                width: 20vw;
+                transition: transform 0.3s ease;
             }
         }
         .section-contact{

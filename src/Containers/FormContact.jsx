@@ -12,7 +12,7 @@ const FormContact = () => {
             name="Nom ou entreprise" 
             placeholder="Votre nom ou votre entreprise" required
             aria-required="true" /> 
-            // Indique que le champ est requis
+            {/* Indique que le champ est requis */}
             <label htmlFor="Email" className='visually-hidden'>Votre adresse email</label>
             <input type="text" 
             id="email" name="email" 

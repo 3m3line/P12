@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 
 import data from './Projets-BD.json'
-import { getUniqueTechnologies, getFilteredProjects } from './Fonctions/dataFiltres'
+import { getUniqueTechnologies} from './Fonctions/dataFiltres'
+import {useAnimation} from './Animations/TextAnimations'
 
 import './App.scss';
 import NavBar from './Containers/NavBar';
@@ -110,6 +111,36 @@ function App() {
     setIsFilterOpen(!isFilterOpen); // Inverser l'état du triangle en fonction de l'ouverture ou non
   };
 
+  //animations span text
+  const { emboIsClicked, handleClickEmbo } = useAnimation();
+  // Utilisation d'un useEffect pour gérer l'animation
+  useEffect(() => {
+    const emboAnimate = document.querySelector('.embo-animate');
+    const dessin = document.querySelector('.dessin');
+    const handleMouseEnter = () => {
+      dessin.classList.add('sway'); // Ajoute la classe d'animation
+    };
+    const handleMouseLeave = () => {
+      dessin.classList.remove('sway'); // Supprime la classe d'animation
+    };
+    const handleClick = () => {
+      dessin.classList.add('sway'); // Ajoute l'animation sur clic
+      setTimeout(() => {
+        dessin.classList.remove('sway'); // Supprime après l'animation
+      }, 1200); // Durée de l'animation
+    };
+    // Écoutez les événements
+    emboAnimate.addEventListener('mouseenter', handleMouseEnter);
+    emboAnimate.addEventListener('mouseleave', handleMouseLeave);
+    emboAnimate.addEventListener('click', handleClick);
+    // Cleanup des écouteurs
+    return () => {
+      emboAnimate.removeEventListener('mouseenter', handleMouseEnter);
+      emboAnimate.removeEventListener('mouseleave', handleMouseLeave);
+      emboAnimate.removeEventListener('click', handleClick);
+    };
+  }, []); // Dépendance vide pour exécuter une fois
+
   return (
     <>
     <header role="banner">
@@ -150,7 +181,7 @@ function App() {
          <>
         <article className='section-a-propos'>
           <p className='fancy-text'>Salut !</p>
-          <p className='texte-intro'>Je m’appelle <span>EMELINE</span> et je suis développeuse web front-end, passionnée par la création de sites <span>FUNS</span> et accessibles à tous. 
+          <p className='texte-intro'>Je m’appelle <span onClick={handleClickEmbo} className={`embo-animate ${emboIsClicked ? 'embo-animate-click' : ''}`}>EMBO</span> et je suis développeuse web front-end, passionnée par la création de sites <span>FUNS</span> et accessibles à tous. 
             < br/> Contactez-moi pour donner vie à vos <span>IDEES</span> !
           </p>
           {/* Ajout du texte détaillé */}
