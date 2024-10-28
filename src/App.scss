@@ -125,6 +125,19 @@ main{
                         object-fit: contain;
                     }
                 }
+                .idees-animation{
+                    position: relative;
+                    .img-idees{
+                        display: none;
+                        position: absolute;
+                        top: -12px;
+                        width: 2em;
+                        right: -76px;
+                    }
+                    .img-idees-click{
+                        display: block;
+                    }
+                }
             }
             .en-savoir-plus{
                 margin-top: 20px;

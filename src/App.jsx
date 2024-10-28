@@ -116,6 +116,8 @@ function App() {
     const emboAnimate = document.querySelector('.embo-animate');
     const dessin = document.querySelector('.dessin');
     const funSpan = document.querySelector('.fun-animate');
+    const ideesAnimate = document.querySelector('.idees-animation');
+    const ampouleVisible = document.querySelector('.img-idees');
 
     //gère les effets visuels pour funAniMate
     //genere les chemins d'images
@@ -161,13 +163,15 @@ function App() {
 
 
   // Gère les effets visuels pour 'emboAnimate' et 'dessin'
-    const handleMouseEnter = () => {
+    const handleMouseEnterEmbo = () => {
       dessin.classList.add('invert'); 
       emboAnimate.classList.add('sway');
+      ampouleVisible.classList.add('img-idees-click');
     };
-    const handleMouseLeave = () => {
+    const handleMouseLeaveEmbo = () => {
       dessin.classList.remove('invert'); 
       emboAnimate.classList.remove('sway');
+      ampouleVisible.classList.remove('img-idees-click');
     };
     const handleClick = () => {
      dessin.classList.add('invert'); // Ajoute l'animation sur clic
@@ -177,19 +181,41 @@ function App() {
         emboAnimate.classList.remove('sway');
       }, 1200); // Durée de l'animation
     };
+
+    //gère les effets visuels pour idées
+    const handleMouseEnterIdees = () => {
+      ampouleVisible.classList.add('img-idees-click');
+    };
+    const handleMouseLeaveIdees = () => {
+      ampouleVisible.classList.remove('img-idees-click');
+    };
+    const handleIdeesClick = () => {
+      ampouleVisible.classList.toggle('img-idees-click'); 
+      setTimeout(() => {
+        ampouleVisible.classList.remove('img-idees-click');
+      }, 600);
+    };
+
     // Écoutez les événements
-    emboAnimate.addEventListener('mouseenter', handleMouseEnter);
-    emboAnimate.addEventListener('mouseleave', handleMouseLeave);
+    emboAnimate.addEventListener('mouseenter', handleMouseEnterEmbo);
+    emboAnimate.addEventListener('mouseleave', handleMouseLeaveEmbo);
     emboAnimate.addEventListener('click', handleClick);
     funSpan.addEventListener('mouseenter', createFireworks);
     funSpan.addEventListener('click', createFireworks);
+    ideesAnimate.addEventListener('mouseenter', handleMouseEnterIdees);
+    ideesAnimate.addEventListener('mouseleave', handleMouseLeaveIdees);
+    ideesAnimate.addEventListener('click', handleIdeesClick);
     // Cleanup des écouteurs
     return () => {
-      emboAnimate.removeEventListener('mouseenter', handleMouseEnter);
-      emboAnimate.removeEventListener('mouseleave', handleMouseLeave);
+      emboAnimate.removeEventListener('mouseenter', handleMouseEnterEmbo);
+      emboAnimate.removeEventListener('mouseleave', handleMouseLeaveEmbo);
       emboAnimate.removeEventListener('click', handleClick);
       funSpan.removeEventListener('mouseenter', createFireworks);
       funSpan.removeEventListener('click', createFireworks);
+      ideesAnimate.removeEventListener('mouseenter', handleMouseEnterIdees);
+      ideesAnimate.removeEventListener('mouseleave', handleMouseLeaveIdees);
+      ideesAnimate.removeEventListener('click', handleIdeesClick);
+
     };
   }, []); // Dépendance vide pour exécuter une fois
 
@@ -234,7 +260,7 @@ function App() {
         <article className='section-a-propos'>
           <p className='fancy-text'>Salut !</p>
           <p className='texte-intro'>Je m’appelle <span  className='embo-animate'>EMBO</span> et je suis développeuse web front-end, passionnée par la création de sites <span className='fun-animate'>FUNS</span> et accessibles à tous. 
-            < br/> Contactez-moi pour donner vie à vos <span>IDEES</span> !
+            < br/> Contactez-moi pour donner vie à vos <span className='idees-animation'>IDEES <img className='img-idees' src="/assets/idees-animation_ampoule.png" alt="representation d'idees sous forme d'ampoule" /></span> !
           </p>
           {/* Ajout du texte détaillé */}
           <p 
