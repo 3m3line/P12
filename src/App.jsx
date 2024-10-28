@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 
 import data from './Projets-BD.json'
 import { getUniqueTechnologies} from './Fonctions/dataFiltres'
-import {useAnimation} from './Animations/TextAnimations'
 
 import './App.scss';
 import NavBar from './Containers/NavBar';
@@ -111,22 +110,26 @@ function App() {
     setIsFilterOpen(!isFilterOpen); // Inverser l'état du triangle en fonction de l'ouverture ou non
   };
 
-  //animations span text
-  const { emboIsClicked, handleClickEmbo } = useAnimation();
+  //animations span text EMBO
   // Utilisation d'un useEffect pour gérer l'animation
   useEffect(() => {
     const emboAnimate = document.querySelector('.embo-animate');
     const dessin = document.querySelector('.dessin');
+
     const handleMouseEnter = () => {
-      dessin.classList.add('sway'); // Ajoute la classe d'animation
+      dessin.classList.add('invert'); 
+      emboAnimate.classList.add('sway');
     };
     const handleMouseLeave = () => {
-      dessin.classList.remove('sway'); // Supprime la classe d'animation
+      dessin.classList.remove('invert'); 
+      emboAnimate.classList.remove('sway');
     };
     const handleClick = () => {
-      dessin.classList.add('sway'); // Ajoute l'animation sur clic
+     dessin.classList.add('invert'); // Ajoute l'animation sur clic
+      emboAnimate.classList.add('sway');
       setTimeout(() => {
-        dessin.classList.remove('sway'); // Supprime après l'animation
+        dessin.classList.remove('invert'); // Supprime après l'animation
+        emboAnimate.classList.remove('sway');
       }, 1200); // Durée de l'animation
     };
     // Écoutez les événements
@@ -181,7 +184,7 @@ function App() {
          <>
         <article className='section-a-propos'>
           <p className='fancy-text'>Salut !</p>
-          <p className='texte-intro'>Je m’appelle <span onClick={handleClickEmbo} className={`embo-animate ${emboIsClicked ? 'embo-animate-click' : ''}`}>EMBO</span> et je suis développeuse web front-end, passionnée par la création de sites <span>FUNS</span> et accessibles à tous. 
+          <p className='texte-intro'>Je m’appelle <span  className='embo-animate'>EMBO</span> et je suis développeuse web front-end, passionnée par la création de sites <span>FUNS</span> et accessibles à tous. 
             < br/> Contactez-moi pour donner vie à vos <span>IDEES</span> !
           </p>
           {/* Ajout du texte détaillé */}
@@ -213,6 +216,7 @@ function App() {
             <img src="/assets/fleche-droite.png" alt="fleche" className='fleche-droite fleche'/>
           </div>
           <img src="/assets/ma-representation-by-domicercle.png" alt="Représentation en dessin de votre développeuse Web Front, réalisée par Domicercle" title="Illustration réalisée par Domicercle (lien dans le footer)" className='dessin'/>
+          <div className="color-overlay"></div>
         </div>
         <article className='section-contact' id='contact'>
           <h2 className='fancy-text'>Me contacter</h2>

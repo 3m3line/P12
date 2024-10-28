@@ -17,6 +17,32 @@
     }
   }
 
+@keyframes invert-animation {
+    0% {
+        filter: invert(0); /* Pas d'inversion au début */
+        opacity: 1;
+    }
+    20%{
+        filter: invert(1); /* Inversion complète au milieu de l'animation */
+        opacity: 0.8;
+    }
+    
+    50% {
+        filter: invert(1); /* Inversion complète au milieu de l'animation */
+        opacity: 0.8;
+    }
+
+    80% {
+        filter: invert(1); /* Inversion complète au milieu de l'animation */
+        opacity: 0.8;
+    }
+    
+    100% {
+        filter: invert(0); 
+        opacity: 1;
+    }
+}
+
   .sway {
     animation: sway 1.2s ease-in-out ; // Utilisez 'forwards' pour garder la dernière position de l'animation
 }
@@ -64,12 +90,8 @@ main{
                 }
                 .embo-animate{
                    transition: transform 0.3s ease;
-                   display: inline-block;
-                    &:hover, 
-                    &:active {
-                        animation: sway 0.6s ease-in-out 2;
-                    }
-                }
+                   display: inline-block;}
+
                 .embo-animate-click, .embo-animate-click{
                     animation: sway 0.6s ease-in-out 2;
                   }
@@ -87,6 +109,7 @@ main{
             }
         }
         .image-presentation{
+            position: relative;
             width: 33.33%;
             display: flex;
             flex-direction: column;
@@ -113,7 +136,12 @@ main{
             .dessin{
                 max-width: 320px;
                 width: 20vw;
-                transition: transform 0.3s ease;
+                position: relative;
+                z-index: 1;
+                transition: filter 1s ease-in-out;;
+                &.invert{
+                    animation: invert-animation 1.2s forwards;
+                }                
             }
         }
         .section-contact{
