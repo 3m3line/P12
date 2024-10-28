@@ -119,9 +119,9 @@ function App() {
 
     //gère les effets visuels pour funAniMate
     //genere les chemins d'images
-    const particleImagesSet1 = Array.from({ length: 12 }, (_, i) => `/assets/fun-image/fun-image_A82f69(${i + 1}).png`);
-    const particleImagesSet2 = Array.from({ length: 16 }, (_, i) => `/assets/fun-image/fun-image_58b681 (${i + 1}).png`);
-    const particleImagesSet3 = Array.from({ length: 15 }, (_, i) => `/assets/fun-image/fun-image_f28e3e (${i + 1}).png`);
+    const particleImagesSet1 = Array.from({ length: 15 }, (_, i) => `/assets/fun-image/fun-image_A82f69(${i + 1}).png`); //rouge
+    const particleImagesSet2 = Array.from({ length: 16 }, (_, i) => `/assets/fun-image/fun-image_ffd1e7 (${i + 1}).png`); //rose
+    const particleImagesSet3 = Array.from({ length: 15 }, (_, i) => `/assets/fun-image/fun-image_c94a4a (${i + 1}).png`); //rouge foncé
     const particleImages = [...particleImagesSet1, ...particleImagesSet2, ...particleImagesSet3];
 
     // Fonction pour créer des particules autour de "FUN"
