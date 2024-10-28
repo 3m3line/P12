@@ -110,12 +110,57 @@ function App() {
     setIsFilterOpen(!isFilterOpen); // Inverser l'état du triangle en fonction de l'ouverture ou non
   };
 
-  //animations span text EMBO
+  //animations span
   // Utilisation d'un useEffect pour gérer l'animation
   useEffect(() => {
     const emboAnimate = document.querySelector('.embo-animate');
     const dessin = document.querySelector('.dessin');
+    const funSpan = document.querySelector('.fun-animate');
 
+    //gère les effets visuels pour funAniMate
+    //genere les chemins d'images
+    const particleImagesSet1 = Array.from({ length: 12 }, (_, i) => `/assets/fun-image/fun-image_A82f69(${i + 1}).png`);
+    const particleImagesSet2 = Array.from({ length: 16 }, (_, i) => `/assets/fun-image/fun-image_58b681 (${i + 1}).png`);
+    const particleImagesSet3 = Array.from({ length: 15 }, (_, i) => `/assets/fun-image/fun-image_f28e3e (${i + 1}).png`);
+    const particleImages = [...particleImagesSet1, ...particleImagesSet2, ...particleImagesSet3];
+
+    // Fonction pour créer des particules autour de "FUN"
+    const createFireworks = () => {
+      const numberOfParticles = 20;
+    
+      for (let i = 0; i < numberOfParticles; i++) {
+        const particle = document.createElement('img');
+        particle.src = particleImages[Math.floor(Math.random() * particleImages.length)];
+        particle.className = 'particle';
+    
+        // Calculer la position en cercle
+        const angle = (i * 2 * Math.PI) / numberOfParticles;
+        particle.style.setProperty('--x', Math.cos(angle));
+        particle.style.setProperty('--y', Math.sin(angle));
+    
+        // Taille et vitesse aléatoires
+        const size = Math.random() * 30 + 20; // taille entre 20px et 50px
+        const duration = Math.random() * 1.5 + 1; // durée entre 1s et 2.5s
+    
+        // Appliquer les propriétés CSS personnalisées
+        particle.style.setProperty('--size', `${size}px`);
+        particle.style.setProperty('--duration', `${duration}s`);
+    
+        // Ajouter les particules en arrière-plan
+        particle.style.position = 'absolute';
+        funSpan.appendChild(particle);
+    
+        // Supprimer la particule après l'animation
+        setTimeout(() => {
+          if (particle.parentNode === funSpan) {
+            funSpan.removeChild(particle);
+          }
+        }, duration * 1000);
+      }
+    };
+
+
+  // Gère les effets visuels pour 'emboAnimate' et 'dessin'
     const handleMouseEnter = () => {
       dessin.classList.add('invert'); 
       emboAnimate.classList.add('sway');
@@ -136,11 +181,15 @@ function App() {
     emboAnimate.addEventListener('mouseenter', handleMouseEnter);
     emboAnimate.addEventListener('mouseleave', handleMouseLeave);
     emboAnimate.addEventListener('click', handleClick);
+    funSpan.addEventListener('mouseenter', createFireworks);
+    funSpan.addEventListener('click', createFireworks);
     // Cleanup des écouteurs
     return () => {
       emboAnimate.removeEventListener('mouseenter', handleMouseEnter);
       emboAnimate.removeEventListener('mouseleave', handleMouseLeave);
       emboAnimate.removeEventListener('click', handleClick);
+      funSpan.removeEventListener('mouseenter', createFireworks);
+      funSpan.removeEventListener('click', createFireworks);
     };
   }, []); // Dépendance vide pour exécuter une fois
 
@@ -184,7 +233,7 @@ function App() {
          <>
         <article className='section-a-propos'>
           <p className='fancy-text'>Salut !</p>
-          <p className='texte-intro'>Je m’appelle <span  className='embo-animate'>EMBO</span> et je suis développeuse web front-end, passionnée par la création de sites <span>FUNS</span> et accessibles à tous. 
+          <p className='texte-intro'>Je m’appelle <span  className='embo-animate'>EMBO</span> et je suis développeuse web front-end, passionnée par la création de sites <span className='fun-animate'>FUNS</span> et accessibles à tous. 
             < br/> Contactez-moi pour donner vie à vos <span>IDEES</span> !
           </p>
           {/* Ajout du texte détaillé */}
