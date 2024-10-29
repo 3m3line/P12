@@ -166,12 +166,10 @@ function App() {
     const handleMouseEnterEmbo = () => {
       dessin.classList.add('invert'); 
       emboAnimate.classList.add('sway');
-      ampouleVisible.classList.add('img-idees-click');
     };
     const handleMouseLeaveEmbo = () => {
       dessin.classList.remove('invert'); 
       emboAnimate.classList.remove('sway');
-      ampouleVisible.classList.remove('img-idees-click');
     };
     const handleClick = () => {
      dessin.classList.add('invert'); // Ajoute l'animation sur clic
