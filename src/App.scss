@@ -92,6 +92,7 @@ main{
         align-items: flex-start;
         margin-top: 1%;
         margin-bottom: 3%;
+        min-height: 557px;
         .section-a-propos{
             width: 33.33%;
             .texte-intro{
@@ -225,6 +226,7 @@ footer{
         .contenu-page{
             margin-top: 4%;
             flex-wrap: wrap;
+            min-height: 848px;
             .section-a-propos{
                 width: 52%;
                 margin: 0 4%;
@@ -306,6 +308,7 @@ footer{
         }
         .contenu-page{
             margin-top: 30px;
+            min-height: 990px;
             .section-a-propos{
                 width: 100%;
                 margin: 0 6% 2%;
@@ -361,6 +364,7 @@ footer{
 @media (max-width: 550px){
     main{
         .contenu-page{
+            min-height: 600px;
             .section-a-propos{
                 .texte-intro{
                     font-size: 6vw;
