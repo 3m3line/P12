@@ -64,6 +64,7 @@ function App() {
       setShowProjects(false); // Affiche la page classique (à propos, etc.)
       setSelectedType(null);  // Réinitialise le type
       setSelectedTech(null);  // Réinitialise la technologie
+      setHasClickedNav(prev => !prev);
       window.location.hash = ``;
     } else if (navItem === 'contact') {
       setShowProjects(false); // Affiche la section contact, comme dans la page classique
@@ -118,6 +119,10 @@ function App() {
     const funSpan = document.querySelector('.fun-animate');
     const ideesAnimate = document.querySelector('.idees-animation');
     const ampouleVisible = document.querySelector('.img-idees');
+
+    if (!emboAnimate || !dessin || !funSpan) {
+      return;
+  }
 
     //gère les effets visuels pour funAniMate
     //genere les chemins d'images
@@ -215,7 +220,7 @@ function App() {
       ideesAnimate.removeEventListener('click', handleIdeesClick);
 
     };
-  }, []); // Dépendance vide pour exécuter une fois
+  }, [hasClickedNav]); // Dépendance vide pour exécuter une fois
 
   return (
     <>
