@@ -11,14 +11,14 @@ export const getUniqueTechnologies = (data) => {
     return Array.from(new Set(data.flatMap(item => item.technologie)));
 };
 
-// Fonction pour filtrer les projets selon la technologie sélectionnée
-export const filterProjectsByTechnology = (data, selectedTech) => {
-    return selectedTech
-        ? data.filter(item => item.technologie.includes(selectedTech))
-        : data;
-};
+// // Fonction pour filtrer les projets selon la technologie sélectionnée
+// export const filterProjectsByTechnology = (data, selectedTech) => {
+//     return selectedTech
+//         ? data.filter(item => item.technologie.includes(selectedTech))
+//         : data;
+// };
 
-// Retourner les projets filtrés selon la technologie ou tous les projets si aucune n'est sélectionnée
-export const getFilteredProjects = (data, selectedTech) => {
-    return selectedTech ? filterProjectsByTechnology(data, selectedTech) : data;
-  };
+// // Retourner les projets filtrés selon la technologie ou tous les projets si aucune n'est sélectionnée
+// export const getFilteredProjects = (data, selectedTech) => {
+//     return selectedTech ? filterProjectsByTechnology(data, selectedTech) : data;
+//   };

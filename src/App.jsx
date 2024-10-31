@@ -22,7 +22,7 @@ function App() {
   const [isFilterOpen, setIsFilterOpen] = useState(false); //eat pour savoir si collapse skill ouvert
   const [hasClickedNav, setHasClickedNav] = useState(false); // Suivi des clics de navigation
 
-    //fonction pour le tri en entonnoir
+    //fonction pour le tri en entonnoir (avec projet)
   const getProjects = () => {
     let filteredProjects = data;
     // Si un type est sélectionné, filtrer par type
@@ -285,7 +285,7 @@ function App() {
                 {showMore && (
                   <div className='info-supp'>
                     <p>
-                    Après plusieurs années en tant que chef de projet, notamment en gestion de projets web, j’ai souhaité réaliser mes sites de A à Z et suis devenue développeuse web frontend. 
+                    Après plusieurs années en tant que chef de projet, notamment en gestion de projets web, j’ai souhaité réaliser mes sites de A à Z et suis devenue développeuse web frontend en suivant la formation developpeur web chez OpenClassroom. 
                     < br/>Aujourd'hui, en freelance, je combine mes compétences en gestion de projet avec mon expertise technique pour concevoir des sites sur mesure, parfaitement adaptés à vos besoins.
                     < br/>Bien que spécialisée en frontend, j’élargis mes compétences vers le full stack. Mon objectif est de créer des sites esthétiques et fonctionnels, tout en intégrant des pratiques d'accessibilité et une approche "green web" favorisant une utilisation raisonnée des ressources.
                     < br/>Si vous cherchez une développeuse capable de transformer vos idées en réalité tout en optimisant chaque détail, je serais ravie de discuter de votre projet.

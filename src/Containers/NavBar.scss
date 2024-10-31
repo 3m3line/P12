@@ -21,6 +21,7 @@ nav {
             font-size: 30px;
             cursor: pointer;
             white-space: nowrap;
+            padding: 1% 3%;
             &:hover {
                 font-weight: 600;
                 text-decoration: underline;
@@ -108,6 +109,7 @@ nav{
 
                 }
             }
+
         }
     
         /* Afficher le menu lorsqu'il est ouvert */
