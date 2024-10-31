@@ -223,9 +223,9 @@ function App() {
     <NavBar handleNavClick={handleNavClick} selectedType={selectedType}/>
     </header>
     <main>
-      <h1 className='visually-hidden'></h1>
-      <section className='filters' aria-labelledby="filter-title">
-        <h2 className='visually-hidden'>Choisissez un tag pour filtrer les technologies</h2>             
+      <h1 className='visually-hidden'>Portfolio de Emo, votre developpeuse Web</h1>
+      <section className='filters' aria-labelledby="filter">
+      <h2 id="filter" className='visually-hidden'>Choisissez un tag pour filtrer les technologies</h2>             
         {window.innerWidth <= 755 && ( // Affiche le bouton uniquement sur petits écrans
         <div onClick={toggleFilter} 
         className={`container-toogle ${isFilterOpen ? 'toogle-open' : ' '}`} 
@@ -234,7 +234,7 @@ function App() {
         aria-controls="filter-buttons"
         tabIndex="0" // permet la navigation clavier
         onKeyDown={(e) => e.key === 'Enter' && toggleFilter()}>
-          <p className='skills-toggle'><span className='toggle-text'>Skills</span>
+          <p className='skills-toggle'><span className='toggle-text' role="presentation">Skills</span>
           <span className='triangle'>{isFilterOpen ? '▴' : '▾'}</span>
           </p>
           <p className={`explication-toggle ${isFilterOpen ? 'open' : ' '}`}>(Cliquer pour afficher)</p></div>
@@ -249,16 +249,16 @@ function App() {
             showProjects={showProjects}
           />)}
           {window.innerWidth > 755 && (
-          <p className={`fancy-text ${!showProjects ? ' ' : 'hide' }`}>Skills</p>)}
+          <p className={`fancy-text ${!showProjects ? ' ' : 'hide' }`} role="presentation">Skills</p>)}
       </section>
       <section className='contenu-page'>
         {/* Si aucun projet filtré, affiche : */}
       {!showProjects ? (
          <>
         <article className='section-a-propos'>
-          <p className='fancy-text'>Salut !</p>
+          <p className='fancy-text' role="presentation">Salut !</p>
           <p className='texte-intro'>Je m’appelle <span  className='embo-animate'>EMBO</span> et je suis développeuse web front-end, passionnée par la création de sites <span className='fun-animate'>FUNS</span> et accessibles à tous. 
-            < br/> Contactez-moi pour donner vie à vos <span className='idees-animation'>IDEES <img className='img-idees' src="/assets/idees-animation_ampoule.png" alt="representation d'idees sous forme d'ampoule" /></span> !
+            < br/> Contactez-moi pour donner vie à vos <span className='idees-animation'>IDEES <img className='img-idees' src="/assets/idees-animation_ampoule.webp" alt="representation d'idees sous forme d'ampoule" /></span> !
           </p>
           {/* Ajout du texte détaillé */}
           <p 
@@ -284,11 +284,11 @@ function App() {
         </article>
         <div className='image-presentation'>
           <div>
-            <img src="/assets/fleche-gauche.png" alt="fleche" className='fleche-gauche fleche'/>
-            <img src="/assets/fleche-haut.png" alt="fleche" className='fleche-haut fleche'/>
-            <img src="/assets/fleche-droite.png" alt="fleche" className='fleche-droite fleche'/>
+            <img src="/assets/fleche-gauche.webp" alt="fleche gauche" className='fleche-gauche fleche' height="101" width="74"/>
+            <img src="/assets/fleche-haut.webp" alt="fleche du haut" className='fleche-haut fleche' height="101" width="74"/>
+            <img src="/assets/fleche-droite.webp" alt="fleche droite" className='fleche-droite fleche' height="101" width="74"/>
           </div>
-          <img src="/assets/ma-representation-by-domicercle.png" alt="Représentation en dessin de votre développeuse Web Front, réalisée par Domicercle" title="Illustration réalisée par Domicercle (lien dans le footer)" className='dessin'/>
+          <img src="/assets/ma-representation-by-domicercle.webp" alt="Représentation en dessin de votre développeuse Web Front, réalisée par Domicercle" title="Illustration réalisée par Domicercle (lien dans le footer)" className='dessin' loading="lazy"/>
           <div className="color-overlay"></div>
         </div>
         <article className='section-contact' id='contact'>

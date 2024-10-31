@@ -9,8 +9,8 @@ const FormatDescription = ({ description }) => {
     return (
       <div className="texteCard">
         {/* Mise en forme pour la partie "OBJECTIF" */}
+        <h3 className='subtitle-card'>{objectiveText.split(':')[0]} :</h3>
         <p>
-          <h3 className='subtitle-card'>{objectiveText.split(':')[0]} :</h3>
           {objectiveText.split(':')[1]?.trim()}<br /><br />
         </p>
         {/* Mise en forme pour "MA CONTRIBUTION" */}

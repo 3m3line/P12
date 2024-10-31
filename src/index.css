@@ -50,6 +50,7 @@ img {
     src: url('./fonts/JustMeAgainDownHere-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 .fancy-text{
   font-family: 'Just Me Again Down Here', 'Arial', sans-serif;

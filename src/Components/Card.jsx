@@ -88,6 +88,9 @@ const HoverCard = ({ project, index }) => {
                 src={isHovered ? project.cover : project.dessin }
                 alt={isHovered ? 'Photo' : 'Dessin'}
                 className={`card-image ${isHovered ? 'hovered' : ''}`}
+                width="623"
+                height="415"
+                loading="lazy"
             />
         </div>
 
@@ -103,7 +106,7 @@ const HoverCard = ({ project, index }) => {
                 <div className='modal-overflow'>
                   {project.lienSite ? (
                     <a href={project.lienSite} target="_blank" rel="noopener noreferrer" aria-label={`Visitez le site du projet ${project.title}`}>
-                        <img src={project.cover} alt="image projet" className='image-lien'/>
+                        <img src={project.cover} alt="image projet" className='image-lien' loading="lazy"/>
                     </a>
                   ) : (
                     <img src={project.cover} alt="image projet" />

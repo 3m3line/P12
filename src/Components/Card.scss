@@ -74,11 +74,15 @@
             width: 100%;
             border: 1px solid #363537;
             box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+            object-position: top;
         }
         .image-lien:hover{
             border: 1px solid #C94A4A;
         }
-        .tag-container, h2, p, .liens-modale{
+        h2{
+            margin-bottom: 5%;
+        }
+        .tag-container, h2, .liens-modale{
             margin-top: 5%;
         }
         p, h2{

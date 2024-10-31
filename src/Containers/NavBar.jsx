@@ -41,7 +41,7 @@ const NavBar = ({ handleNavClick, selectedType }) => {
     }, []);
 
     return (
-        <nav ref={menuRef} aria-label="Navigation principale">
+        <nav ref={menuRef} aria-label="Navigation principale" role="navigation">
             <div onClick={() => handleNavClick('home')} className='logo'
                 role="button" // Indique que c'est un élément cliquable
                 tabIndex={0} // pour rendre le logo focusable
@@ -54,7 +54,9 @@ const NavBar = ({ handleNavClick, selectedType }) => {
                     role="button" // Indique que c'est un élément cliquable
                     tabIndex={0} // Rendre l'icône burger focusable
                     onKeyDown={(e) => e.key === 'Enter' && toggleMenu()} // Gestion de l'accessibilité au clavier
-                    >
+                    aria-haspopup="true" // Indique qu'un menu s'ouvre
+                    aria-expanded={menuOpen} // Indique si le menu est ouvert
+                   >
                 {/* Icône du burger */}
                 <span></span>
                 <span></span>
@@ -69,12 +71,9 @@ const NavBar = ({ handleNavClick, selectedType }) => {
                             onKeyDown={(e) => e.key === 'Enter' && handleMenuClick(type)} // Gestion de l'accessibilité au clavier
                             >{type}</li>  // Générer un <li> pour chaque type
                     ))}
-                <li><a href="#contact" 
-                onClick={() => handleMenuClick('contact')}
-                role="menuitem" // Indique que c'est un élément de menu
-                            tabIndex={0} // Rendre l'élément de menu focusable
-                            onKeyDown={(e) => e.key === 'Enter' && handleMenuClick('contact')} // Gestion de l'accessibilité au clavier
-                            >Contact</a></li>
+                <li role="menuitem" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && handleMenuClick('contact')}>
+                    <a href="#contact" onClick={() => handleMenuClick('contact')}>Contact</a>
+                </li>
             </ul>
             </div>
         </nav>
