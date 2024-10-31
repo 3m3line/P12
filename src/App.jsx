@@ -66,16 +66,21 @@ function App() {
       setSelectedTech(null);  // Réinitialise la technologie
       setHasClickedNav(prev => !prev);
       window.location.hash = ``;
+      window.history.pushState(null, '', window.location.pathname);
     } else if (navItem === 'contact') {
       setShowProjects(false); // Affiche la section contact, comme dans la page classique
       setSelectedType(null);  // Réinitialise le type
       setSelectedTech(null);  // Réinitialise la technologie
       window.location.hash = '#contact';
+      setTimeout(() => {
+        window.history.pushState(null, '', window.location.pathname);
+    }, 100);
     } else {
       setSelectedType(navItem); // Filtre par type de projet
       setSelectedTech(null); // Réinitialise la technologie
       setShowProjects(true); // Affiche les projets filtrés par type
       window.location.hash = ``;
+      window.history.pushState(null, '', window.location.pathname);
     }
   };
 
@@ -120,6 +125,7 @@ function App() {
     const ideesAnimate = document.querySelector('.idees-animation');
     const ampouleVisible = document.querySelector('.img-idees');
 
+    //pour reinitialiser les animation après changement composants
     if (!emboAnimate || !dessin || !funSpan) {
       return;
   }
